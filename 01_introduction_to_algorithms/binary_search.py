@@ -44,7 +44,7 @@ class BinarySearch():
             return self.search_recursive(list, mid + 1, high, item) 
   
     else: 
-        # Element is not present in the array 
+        # Element is not spresent in the array 
         return None
 
 if __name__ == "__main__":
