@@ -14,6 +14,7 @@ graph["thom"] = []
 graph["jonny"] = []
 
 def search(name):
+    out_str = ''
     search_queue = deque()
     search_queue += [name]
     # This is how you keep track of which people you've searched before.
@@ -24,11 +25,15 @@ def search(name):
         if person in searched:
             continue
         if person_is_seller(person):
+            out_str+= f' {person}'
+            print(out_str)
             print(person + " is a mango seller!")
             return True
+        out_str+= f' {person} ->'
         search_queue += graph[person]
         # Marks this person as searched
         searched.add(person)
+    print(out_str)
     return False
 
 search("you")
