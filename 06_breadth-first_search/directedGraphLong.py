@@ -1,4 +1,5 @@
 # Directed Graph
+# CONVOLUTED EXAMPLE #1
 
 from collections import deque
 
@@ -29,6 +30,27 @@ class Node:
     def __str__(self): 
         return self.value
     
+# graph.add_edge(1, 2)
+# graph.add_edge(1, 3)
+# graph.add_edge(2, 4)
+# graph.add_edge(2, 5)
+# graph.add_edge(3, 6)
+# graph.add_edge(3, 7)
+
+
+one = Node('1')
+two = Node('2')
+three = Node('3')
+four = Node('4')
+five = Node('5')
+six = Node('6')
+seven = Node('7')
+
+one.addChildren([two, three])
+two.addChildren([four, five])
+three.addChildren([six, seven])
+
+
 # # Initialize nodes and their values
 # a = Node('a', isStart=True)
 # b = Node('b')
@@ -52,20 +74,20 @@ class Node:
 # e.addChildNode(d)
 # e.addChildNode(f)
 
-# Initialize nodes and their values
-cab_node = Node('cab')
-car_node = Node('car')
-cat_node = Node('cat')
-mat_node = Node('mat')
-bar_node = Node('bar')
-bat_node = Node('bat')
+# # Initialize nodes and their values
+# cab_node = Node('cab')
+# car_node = Node('car')
+# cat_node = Node('cat')
+# mat_node = Node('mat')
+# bar_node = Node('bar')
+# bat_node = Node('bat')
 
-# Create relationships
-cab_node.addChildren([cat_node, car_node])
-car_node.addChildren([bar_node, cat_node])
-cat_node.addChildren([bat_node, mat_node])
-bar_node.addChildren([bat_node])
-mat_node.addChildren([bat_node])
+# # Create relationships
+# cab_node.addChildren([cat_node, car_node])
+# car_node.addChildren([bar_node, cat_node])
+# cat_node.addChildren([bat_node, mat_node])
+# bar_node.addChildren([bat_node])
+# mat_node.addChildren([bat_node])
 
 
 # # Initialize nodes and their values
@@ -153,7 +175,7 @@ class DirectedGraph:
 
             # check if we find end, return number of steps
             if end_node==current_node:
-                out_str+= f' {current_node.value}'
+                out_str+= f'{current_node.value}'
                 print(out_str)
                 return num_steps
             
@@ -163,9 +185,9 @@ class DirectedGraph:
             check_queue+=current_node.children
 
             num_steps += 1
-            out_str+= f' {current_node.value} ->'
+            out_str += f'{current_node.value} -> '
         
-        print('NOT FOUND', out_str)
+        print(end_node.value, 'NOT FOUND!')
         # end_node not found, return -1
         return -1
         
@@ -183,8 +205,10 @@ class DirectedGraph:
 
 # graph = DirectedGraph([you_node, bob_node, alice_node, claire_node, anuj_node, peggy_node, thom_node])
 # print(graph.bfs(you_node, johnny_node))
-graph = DirectedGraph([cab_node, car_node, cat_node, bar_node, mat_node, bat_node])
-print(graph.bfs(cab_node, bat_node))
+# graph = DirectedGraph([cab_node, car_node, cat_node, bar_node, mat_node, bat_node])
+# print(graph.bfs(cab_node, bat_node))
+graph = DirectedGraph([one, two, three])
+print(graph.bfs(one, seven))
 
 
 '''
@@ -193,8 +217,9 @@ todo:
 [X] remove start and end
 [X] create graph building functinality
 [X] implement addCHildren()
-[] fix print output (book example)
-[] implement BFS
+[X] fix print output (book example)
+[X] implement BFS
+[] refactor node class
 '''
 
 

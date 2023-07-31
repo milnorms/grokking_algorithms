@@ -21,6 +21,7 @@ def search(name):
     searched = set()
     while search_queue:
         person = search_queue.popleft()
+        print(person)
         # Only search this person if you haven't already searched them.
         if person in searched:
             continue
@@ -29,7 +30,7 @@ def search(name):
             print(out_str)
             print(person + " is a mango seller!")
             return True
-        out_str+= f' {person} ->'
+        out_str+= f'{person} -> '
         search_queue += graph[person]
         # Marks this person as searched
         searched.add(person)
