@@ -28,13 +28,14 @@ def is_mango_seller(person: str) -> bool:
     return False
 
 # implement bfs to find mango seller
-def bfs_mango(graph: dict) -> str:
+def bfs_mango(start_node: str, graph: dict) -> str:
     # initialize queue for nodes to check
     check_queue = deque()
     # initialze set to store checked nodes
     checked_nodes = set()
-    # add first node to check queue
-    person = list(graph.keys())[0]
+    # add start node to check queue
+    person = start_node
+    # adding single string to queue (must use append instead of += operator)
     check_queue.append(person)
 
     # initialize output string for printing searched nodes
@@ -44,7 +45,6 @@ def bfs_mango(graph: dict) -> str:
     while check_queue:
         # pop current person from front of queue
         person = check_queue.popleft()
-        print(person)
         # check if person has been checked. if they have, move onto the next person in the queue
         if person in checked_nodes:
             continue
@@ -70,7 +70,7 @@ def bfs_mango(graph: dict) -> str:
     # Return an empty string
     return ''
         
-print(bfs_mango(graph))
+print(bfs_mango('you', graph))
 
 
 
